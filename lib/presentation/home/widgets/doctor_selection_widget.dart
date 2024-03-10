@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/core.dart';
+import '../../presentation_utils/app_theme_data.dart';
 import '../controller/home_controller.dart';
 
 class DoctorSelectionWidget extends ConsumerWidget {
@@ -49,21 +50,37 @@ class DoctorSelectionWidget extends ConsumerWidget {
               ),
             ),
           ),
-          const Row(
+          Row(
             children: [
-              Card(
-                child: Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Text(str_home_screen_am),
+              InkWell(
+                onTap: () {
+                  ref
+                      .read(homeControllerProvider.notifier)
+                      .updateMeridean(true);
+                },
+                child: Card(
+                  color: state.isAMSelected ? primary90Color : null,
+                  child: const Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Text(str_home_screen_am),
+                  ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
-              Card(
-                child: Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Text(str_home_screen_pm),
+              InkWell(
+                onTap: () {
+                  ref
+                      .read(homeControllerProvider.notifier)
+                      .updateMeridean(false);
+                },
+                child: Card(
+                  color: state.isAMSelected ? null : primary90Color,
+                  child: const Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Text(str_home_screen_pm),
+                  ),
                 ),
               )
             ],

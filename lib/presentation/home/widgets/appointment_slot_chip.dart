@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AppointmentSlotChip extends ConsumerWidget {
-  const AppointmentSlotChip({super.key});
-
+  const AppointmentSlotChip({
+    required this.startTime,
+    required this.endTime,
+    required this.isAvailable,
+    super.key,
+  });
+  final String startTime;
+  final String endTime;
+  final bool isAvailable;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
@@ -14,7 +21,7 @@ class AppointmentSlotChip extends ConsumerWidget {
         ),
         labelPadding: const EdgeInsets.all(0),
         label: Text(
-          '8:00 - 8:15',
+          '$startTime - $endTime',
           style: Theme.of(context).textTheme.bodySmall,
         ),
       ),

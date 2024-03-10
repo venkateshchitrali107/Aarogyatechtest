@@ -20,14 +20,15 @@ class DrawSlotsCircle extends CustomPainter {
     );
     double degToRad(double deg) => deg * (pi / 180.0);
     Path path;
-    if (numberOfSlots >= 4) {
+    final availableSlots = 4 - ((numberOfSlots > 4) ? 4 : numberOfSlots);
+    if (availableSlots == 4) {
       path = Path()..addOval(rect);
     } else {
       path = Path()
         ..arcTo(
           rect,
-          degToRad(270 - (90.0 * numberOfSlots)),
-          degToRad(90.0 * numberOfSlots),
+          degToRad(270 - (90.0 * availableSlots)),
+          degToRad(90.0 * availableSlots),
           true,
         );
     }

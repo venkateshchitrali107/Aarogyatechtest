@@ -1,20 +1,39 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../data/data_source/models/data_models.dart';
 import 'home_controller_state.dart';
 
 part 'home_controller.g.dart';
 
 @riverpod
 class HomeController extends _$HomeController {
+  final amSlots = [
+    SlotsModel(hour: '8', availableSlotNumbers: [1], availableSlots: 1),
+    SlotsModel(hour: '9', availableSlotNumbers: [1, 3], availableSlots: 2),
+    SlotsModel(
+        hour: '10', availableSlotNumbers: [1, 2, 3, 4], availableSlots: 4),
+    SlotsModel(hour: '11', availableSlotNumbers: [2, 3, 4], availableSlots: 3),
+    SlotsModel(hour: '12', availableSlotNumbers: [], availableSlots: 0),
+  ];
+  final pmSlots = [
+    SlotsModel(hour: '5', availableSlotNumbers: [1], availableSlots: 1),
+    SlotsModel(hour: '6', availableSlotNumbers: [1, 3], availableSlots: 2),
+    SlotsModel(
+        hour: '7', availableSlotNumbers: [1, 2, 3, 4], availableSlots: 4),
+    SlotsModel(hour: '8', availableSlotNumbers: [2, 3, 4], availableSlots: 3),
+    SlotsModel(hour: '9', availableSlotNumbers: [], availableSlots: 0),
+  ];
   @override
   HomeControllerState build() {
-    return const HomeControllerState(
-      currentDateIndex: 0,
-      isLoading: true,
-      dates: [],
-      doctors: [],
-      dropdownValue: null,
-    );
+    return HomeControllerState(
+        currentDateIndex: 0,
+        isLoading: true,
+        dates: const [],
+        doctors: const [],
+        dropdownValue: null,
+        isAMSelected: true,
+        slots: amSlots,
+        selectedSlot: null);
   }
 
   void setDoctor(String doctor) {
@@ -49,5 +68,21 @@ class HomeController extends _$HomeController {
       doctors: doctors,
       dropdownValue: null,
     );
+  }
+
+  void updateMeridean(bool isAMSelected) {
+    state = state.copyWith(
+      isAMSelected: isAMSelected,
+      slots: isAMSelected ? amSlots : pmSlots,
+      removeSelectedSlot: true,
+    );
+  }
+
+  void updateSlots() {
+    state = state.copyWith(slots: state.isAMSelected ? amSlots : pmSlots);
+  }
+
+  void selectHourSlot(SlotsModel slot) {
+    state = state.copyWith(selectedSlot: slot);
   }
 }
