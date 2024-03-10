@@ -62,7 +62,7 @@ class AppointmentsRemoteDataSourceImpl implements AppointmentsDataSource {
         final doctorId = 'doctor_id=${paramas.doctorId}';
         final url = Uri.parse('$baseUrl?$scheduledDate&$doctorId');
         final response = await http.get(url);
-        return Right('');
+        return const Right('');
       } on Error catch (error) {
         return Left(ServerFailure(error.toString()));
       }
