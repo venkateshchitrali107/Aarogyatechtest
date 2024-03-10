@@ -1,16 +1,9 @@
 # Aarogyatechtest
 
-A new Flutter project.
+A sample Flutter project build with flutter version 3.16.6. Completed the user interface with the sample data. Will integrate the API's
 
-## Getting Started
+Here is the screen recording of the UI.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+https://github.com/venkateshchitrali107/Aarogyatechtest/assets/110725361/3f77f8da-433e-42b0-87d1-a13c97f5f322
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
