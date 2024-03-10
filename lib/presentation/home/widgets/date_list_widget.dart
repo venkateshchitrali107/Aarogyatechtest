@@ -42,44 +42,49 @@ class _DateListWidgetState extends ConsumerState<DateListWidget> {
         itemCount: state.dates.length,
         controller: _scrollController,
         itemBuilder: (context, index) {
-          return SizedBox(
-            width: 100,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                color:
-                    (index == state.currentDateIndex) ? primary90Color : null,
-                elevation: index == state.currentDateIndex ? 3.0 : 0.5,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  side: BorderSide(
-                    width: 1,
-                    color: (index == state.currentDateIndex)
-                        ? primary80Color
-                        : Colors.transparent,
+          return InkWell(
+            onTap: () {
+              ref.read(homeControllerProvider.notifier).selectDate(index);
+            },
+            child: SizedBox(
+              width: 100,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  color:
+                      (index == state.currentDateIndex) ? primary90Color : null,
+                  elevation: index == state.currentDateIndex ? 3.0 : 0.5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    side: BorderSide(
+                      width: 1,
+                      color: (index == state.currentDateIndex)
+                          ? primary80Color
+                          : Colors.transparent,
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        date_format_mmm.format(state.dates[index]),
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4),
-                        child: Text(
-                          date_format_dd.format(state.dates[index]),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          date_format_mmm.format(state.dates[index]),
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
-                      ),
-                      Text(
-                        date_format_e.format(state.dates[index]),
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4),
+                          child: Text(
+                            date_format_dd.format(state.dates[index]),
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        ),
+                        Text(
+                          date_format_e.format(state.dates[index]),
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

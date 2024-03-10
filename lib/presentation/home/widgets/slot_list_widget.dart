@@ -15,7 +15,8 @@ class SlotListWidget extends ConsumerWidget {
         height: 60,
       );
     } else {
-      final int slotHour = int.parse(state.selectedSlot!.hour);
+      final selectedSlot = state.selectedSlot!;
+      final int slotHour = int.parse(selectedSlot.hour);
       return SizedBox(
         height: 60,
         child: Padding(
@@ -26,22 +27,22 @@ class SlotListWidget extends ConsumerWidget {
               AppointmentSlotChip(
                 startTime: '$slotHour:00',
                 endTime: '$slotHour:15',
-                isAvailable: true,
+                isAvailable: selectedSlot.availableSlotNumbers.contains(1),
               ),
               AppointmentSlotChip(
                 startTime: '$slotHour:15',
                 endTime: '$slotHour:30',
-                isAvailable: true,
+                isAvailable: selectedSlot.availableSlotNumbers.contains(2),
               ),
               AppointmentSlotChip(
                 startTime: '$slotHour:30',
                 endTime: '$slotHour:45',
-                isAvailable: true,
+                isAvailable: selectedSlot.availableSlotNumbers.contains(3),
               ),
               AppointmentSlotChip(
                 startTime: '$slotHour:45',
                 endTime: '${slotHour + 1}:00',
-                isAvailable: true,
+                isAvailable: selectedSlot.availableSlotNumbers.contains(4),
               ),
             ],
           ),

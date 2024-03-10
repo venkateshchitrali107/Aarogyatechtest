@@ -27,6 +27,7 @@ class HomeControllerState extends Equatable {
     bool? isLoading,
     List<DateTime>? dates,
     List<String>? doctors,
+    bool removeDropdownValue = false,
     String? dropdownValue,
     bool? isAMSelected,
     List<SlotsModel>? slots,
@@ -38,7 +39,8 @@ class HomeControllerState extends Equatable {
       isLoading: isLoading ?? this.isLoading,
       dates: dates ?? this.dates,
       doctors: doctors ?? this.doctors,
-      dropdownValue: dropdownValue ?? this.dropdownValue,
+      dropdownValue:
+          removeDropdownValue ? null : dropdownValue ?? this.dropdownValue,
       isAMSelected: isAMSelected ?? this.isAMSelected,
       slots: slots ?? this.slots,
       selectedSlot:

@@ -31,7 +31,7 @@ class HomeController extends _$HomeController {
         dates: const [],
         doctors: const [],
         dropdownValue: null,
-        isAMSelected: true,
+        isAMSelected: isCurrentAM(),
         slots: amSlots,
         selectedSlot: null);
   }
@@ -70,6 +70,15 @@ class HomeController extends _$HomeController {
     );
   }
 
+  void selectDate(int dateIndex) {
+    state = state.copyWith(
+      currentDateIndex: dateIndex,
+      isAMSelected: isCurrentAM(),
+      removeDropdownValue: true,
+      removeSelectedSlot: true,
+    );
+  }
+
   void updateMeridean(bool isAMSelected) {
     state = state.copyWith(
       isAMSelected: isAMSelected,
@@ -84,5 +93,10 @@ class HomeController extends _$HomeController {
 
   void selectHourSlot(SlotsModel slot) {
     state = state.copyWith(selectedSlot: slot);
+  }
+
+  bool isCurrentAM() {
+    final now = DateTime.now();
+    return now.hour < 12;
   }
 }

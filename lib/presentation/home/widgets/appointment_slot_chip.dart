@@ -16,6 +16,9 @@ class AppointmentSlotChip extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: Chip(
+        color: MaterialStatePropertyAll(
+          isAvailable ? Colors.white : Colors.grey.shade300,
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
