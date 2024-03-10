@@ -11,6 +11,11 @@ String fontName = 'Roboto';
 ThemeData getAppTheme() {
   return ThemeData(
     primaryColor: primaryColor,
+    filledButtonTheme: FilledButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(primary90Color),
+      ),
+    ),
     textTheme: TextTheme(
       //H1/Bold 28px
       displayLarge: TextStyle(

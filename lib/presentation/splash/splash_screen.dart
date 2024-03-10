@@ -41,7 +41,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
             const SizedBox(
               height: 32,
             ),
-            const Text('Aarogya Tech'), // Show app name
+            Text(
+              'Aarogya Tech',
+              style: Theme.of(context).textTheme.displayLarge,
+            ), // Show app name
           ],
         ),
       ),

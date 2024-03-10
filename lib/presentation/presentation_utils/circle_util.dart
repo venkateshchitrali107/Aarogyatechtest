@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'app_theme_data.dart';
+
 class DrawSlotsCircle extends CustomPainter {
   final int numberOfSlots;
 
@@ -11,7 +13,7 @@ class DrawSlotsCircle extends CustomPainter {
     final Paint paint = Paint()
       ..strokeWidth = 8
       ..style = PaintingStyle.stroke
-      ..color = Colors.orangeAccent;
+      ..color = secondaryColor;
     final rect = Rect.fromCircle(
       center: Offset(size.width / 2, size.height / 2),
       radius: size.width / 2.5,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../patient_profile/patient_profile_screen.dart';
+import '../presentation_utils/app_theme_data.dart';
 import 'widgets/hour_slot_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,44 +41,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
     return dates;
   }
-
-  // Container getTheHourSlot(
-  //   int slotTime,
-  //   int numberOfAvailableSlots,
-  //   BuildContext context,
-  // ) {
-  //   return Container(
-  //     margin: const EdgeInsets.symmetric(horizontal: 4),
-  //     height: MediaQuery.of(context).size.width / 4.5,
-  //     width: MediaQuery.of(context).size.width / 4.5,
-  //     decoration: BoxDecoration(
-  //       color: Colors.white,
-  //       shape: BoxShape.circle,
-  //       border: Border.all(
-  //         color: Colors.black26,
-  //         width: 1,
-  //       ),
-  //       boxShadow: const [
-  //         BoxShadow(
-  //           color: Colors.black12,
-  //           blurRadius: 10,
-  //           offset: Offset(0, 5),
-  //         ),
-  //       ],
-  //     ),
-  //     child: Center(
-  //       child: CustomPaint(
-  //         painter: DrawSlotsCircle(numberOfSlots: numberOfAvailableSlots),
-  //         child: Center(
-  //           child: Text(
-  //             '$slotTime',
-  //             style: Theme.of(context).textTheme.labelSmall,
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
 
   Widget getTheAppointmentSlotChips(BuildContext context) {
     return Padding(
@@ -157,13 +120,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
+                      color:
+                          (index == currentDateIndex) ? primary90Color : null,
                       elevation: index == currentDateIndex ? 3.0 : 0.5,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(
                           width: 1,
                           color: (index == currentDateIndex)
-                              ? Colors.black38
+                              ? primary80Color
                               : Colors.transparent,
                         ),
                       ),
@@ -294,6 +259,9 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 32,
           ),
           FilledButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(primary90Color),
+            ),
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(

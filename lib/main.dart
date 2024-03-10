@@ -6,6 +6,7 @@ import 'presentation/presentation_utils/app_theme_data.dart';
 import 'presentation/splash/splash_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp]); // set orientation to portrait
   runApp(const ProviderScope(child: MyApp())); // run the MyApp widget
