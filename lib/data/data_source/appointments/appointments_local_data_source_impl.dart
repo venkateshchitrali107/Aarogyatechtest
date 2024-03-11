@@ -8,20 +8,20 @@ class AppointmentsLocalDataSourceImpl implements AppointmentsDataSource {
   @override
   Future<Either<Failure, bool>> createAppointment(
       CreateAppointmentParams paramas) {
-    // TODO: implement createAppointment
+    // TODO: implement createAppointment //add inline comment
     throw UnimplementedError();
   }
 
   @override
   Future<Either<Failure, bool>> createPatient(CreatePatientParams paramas) {
-    // TODO: implement createPatient
+    // TODO: implement createPatient //add inline comment
     throw UnimplementedError();
   }
 
   @override
   Future<Either<Failure, String>> getScheduledAppointments(
       GetScheduledAppointmentsParams paramas) {
-    // TODO: implement getScheduledAppointments
+    // TODO: implement getScheduledAppointments //add inline comment
     throw UnimplementedError();
   }
 }

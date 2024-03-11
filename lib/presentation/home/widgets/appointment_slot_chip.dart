@@ -1,3 +1,4 @@
+import '../../presentation_utils/app_theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,18 +7,22 @@ class AppointmentSlotChip extends ConsumerWidget {
     required this.startTime,
     required this.endTime,
     required this.isAvailable,
+    required this.isSelected,
     super.key,
   });
   final String startTime;
   final String endTime;
   final bool isAvailable;
+  final bool isSelected;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: Chip(
         color: MaterialStatePropertyAll(
-          isAvailable ? Colors.white : Colors.grey.shade300,
+          isAvailable
+              ? (isSelected ? primary90Color : Colors.white)
+              : Colors.grey.shade300,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),

@@ -13,6 +13,7 @@ class GetScheduledAppointmentsUseCase
   @override
   Future<Either<Failure, String>> call(
       GetScheduledAppointmentsParams params) async {
-    return await repository.getScheduledAppointments(params);
+    return await repository
+        .getScheduledAppointments(params); // call repository method
   }
 }

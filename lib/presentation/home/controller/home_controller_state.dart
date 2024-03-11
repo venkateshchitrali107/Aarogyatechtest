@@ -3,14 +3,16 @@ import 'package:equatable/equatable.dart';
 import '../../../data/data_source/models/data_models.dart';
 
 class HomeControllerState extends Equatable {
-  final bool isLoading;
-  final int currentDateIndex;
-  final List<DateTime> dates;
-  final List<String> doctors;
-  final String? dropdownValue;
-  final bool isAMSelected;
-  final List<SlotsModel> slots;
-  final SlotsModel? selectedSlot;
+  final bool isLoading; // tracks loading state
+  final int currentDateIndex; // index of selected date
+  final List<DateTime> dates; // list of available dates
+  final List<String> doctors; // list of available doctors
+  final String? dropdownValue; // selected doctor
+  final bool isAMSelected; // tracks AM/PM selection
+  final List<SlotsModel> slots; // available slots
+  final SlotsModel? selectedSlot; // selected slot
+  final int? selectedSlotNumber; // index of selected slot
+
   const HomeControllerState({
     required this.currentDateIndex,
     required this.isLoading,
@@ -20,6 +22,7 @@ class HomeControllerState extends Equatable {
     required this.isAMSelected,
     required this.slots,
     required this.selectedSlot,
+    required this.selectedSlotNumber,
   });
 
   HomeControllerState copyWith({
@@ -33,6 +36,8 @@ class HomeControllerState extends Equatable {
     List<SlotsModel>? slots,
     SlotsModel? selectedSlot,
     bool removeSelectedSlot = false,
+    int? selectedSlotNumber,
+    bool removeSelectedSlotNumber = false,
   }) {
     return HomeControllerState(
       currentDateIndex: currentDateIndex ?? this.currentDateIndex,
@@ -45,9 +50,22 @@ class HomeControllerState extends Equatable {
       slots: slots ?? this.slots,
       selectedSlot:
           removeSelectedSlot ? null : selectedSlot ?? this.selectedSlot,
+      selectedSlotNumber: removeSelectedSlotNumber
+          ? null
+          : selectedSlotNumber ?? this.selectedSlotNumber,
     );
   }
 
   @override
-  List<Object> get props => [isLoading];
+  List<Object?> get props => [
+        isLoading,
+        currentDateIndex,
+        dates,
+        doctors,
+        dropdownValue,
+        isAMSelected,
+        slots,
+        selectedSlot,
+        selectedSlotNumber
+      ];
 }

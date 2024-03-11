@@ -1,5 +1,6 @@
 import 'package:aarogyatechtest/data/data_source/models/slots_model.dart';
 import 'package:aarogyatechtest/presentation/home/controller/home_controller.dart';
+import 'package:aarogyatechtest/presentation/presentation_utils/app_theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,6 +12,21 @@ class GetTheHourSlot extends ConsumerWidget {
     super.key,
   });
   final SlotsModel slot;
+
+  Color getColorForHourSlot(WidgetRef ref) {
+    if (slot.availableSlots == 0) {
+      return Colors.grey.shade200;
+    } else {
+      final state = ref.read(homeControllerProvider);
+      if (state.selectedSlot != null) {
+        if (state.selectedSlot!.hour == slot.hour) {
+          return primary90Color;
+        }
+      }
+      return Colors.white;
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
@@ -24,7 +40,7 @@ class GetTheHourSlot extends ConsumerWidget {
         height: MediaQuery.of(context).size.width / 4.5,
         width: MediaQuery.of(context).size.width / 4.5,
         decoration: BoxDecoration(
-          color: slot.availableSlots == 0 ? Colors.grey.shade200 : Colors.white,
+          color: getColorForHourSlot(ref),
           shape: BoxShape.circle,
           border: Border.all(
             color: Colors.black26,

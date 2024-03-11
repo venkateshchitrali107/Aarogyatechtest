@@ -20,8 +20,12 @@ class AppointmentsRemoteDataSourceImpl implements AppointmentsDataSource {
         final url = Uri.parse(
           APIendpoints().baseUrl + APIendpoints().createPatient,
         );
+
+        // Make API call to create appointment
         final body = paramas.toMap();
         final response = await http.post(url, body: body);
+
+        // Check if API call was successful
         return Right(response.statusCode == 200);
       } on Error catch (error) {
         return Left(ServerFailure(error.toString()));
@@ -39,8 +43,12 @@ class AppointmentsRemoteDataSourceImpl implements AppointmentsDataSource {
     if (isConnected) {
       try {
         final url = Uri.parse(APIendpoints().baseUrl);
+
+        // Make API call to create patient
         final body = paramas.toMap();
         final response = await http.post(url, body: body);
+
+        // Check if API call was successful
         return Right(response.statusCode == 200);
       } on Error catch (error) {
         return Left(ServerFailure(error.toString()));
@@ -61,7 +69,10 @@ class AppointmentsRemoteDataSourceImpl implements AppointmentsDataSource {
         final scheduledDate = 'scheduled_date=${paramas.scheduledDate}';
         final doctorId = 'doctor_id=${paramas.doctorId}';
         final url = Uri.parse('$baseUrl?$scheduledDate&$doctorId');
+
+        // Make API call to get scheduled appointments
         final response = await http.get(url);
+
         return const Right('');
       } on Error catch (error) {
         return Left(ServerFailure(error.toString()));
